@@ -5,21 +5,22 @@ import java.util.List;
 
 public class Billing {
 	
-	private int studentId; //position 0-7
-	private String firstName; //position 7-17
-	private String surname; //position 17-32
-	private String fatherName; //position 32-42
-	private String motherName; //position 42-52
-	private int quantidadeParcelas; //position 52-55
-	private List<Parcela> parcelas; //position 55-57(number)/position 57-64(value)...64-66(number)/66-73(value)...
+	private int studentId;
+	private String firstName; //position 0-10
+	private String surname; //position 10-25
+	//reserved position for login (25-31)
+	private String fatherName; //position 31-41
+	private String motherName; //position 41-51
+	private int quantidadeParcelas; //position 51-54
+	private List<Parcela> parcelas; //position 54-56(number)/position 56-63(value)...63-65(number)/65-72(value)...
 	
 	/**
 	 * Create a billing from an String entry, according to the following format:
-	 * STUDENT-INFO.                                      
-	 * STUDENT-ID        	PIC 9(7).                      
+	 * STUDENT-INFO.                                                         
 	 * STUDENT-NAME.                                      
 	 * 03 FIRST-NAME        PIC XXXXXXXXXX.               
-	 * 03 SURNAME           PIC X(15).                    
+	 * 03 SURNAME           PIC X(15).                  
+	 * 03 LOGIN           	PIC X(6).  (WE DON'T USE IT)
 	 * PARENTS-NAMES.                                     
 	 * 03 FATHER-NAME    PIC XXXXXXXXXX.                  
 	 * 03 MOTHER-NAME    PIC XXXXXXXXXX.                  
@@ -31,17 +32,16 @@ public class Billing {
 	 * @param billingInfo
 	 */
 	public Billing(String billingInfo) {
-		if (billingInfo.length() < 55)
-			throw new IllegalArgumentException("Comunica‹o inv‡lida - String de entrada deve ter no m’nimo 55 caracteres.");
-		setStudentId(billingInfo.substring(0, 7));
-		setFirstName(billingInfo.substring(7, 17));
-		setSurname(billingInfo.substring(17, 32));
-		setFatherName(billingInfo.substring(32, 42));
-		setMotherName(billingInfo.substring(42, 52));
-		setQuantidadeParcelas(billingInfo.substring(52, 55));
+		if (billingInfo.length() < 54)
+			throw new IllegalArgumentException("Comunica‹o inv‡lida - String de entrada deve ter no m’nimo 54 caracteres.");
+		setFirstName(billingInfo.substring(0, 10));
+		setSurname(billingInfo.substring(10, 25));
+		setFatherName(billingInfo.substring(31, 41));
+		setMotherName(billingInfo.substring(41, 51));
+		setQuantidadeParcelas(billingInfo.substring(51, 54));
 		//calculando parcelas
 		parcelas = new ArrayList<Parcela>();
-		for (int i = 0, init=55; i < quantidadeParcelas; i++) {
+		for (int i = 0, init=54; i < quantidadeParcelas; i++) {
 			if (billingInfo.length() < init + 9)
 				throw new IllegalArgumentException("Comunica‹o inv‡lida - Dados insuficientes para calcular pr—xima parcela");
 			int number = Integer.parseInt(billingInfo.substring(init, init += 2));

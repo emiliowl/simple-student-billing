@@ -34,7 +34,7 @@ public class Entry {
 			
 			MainframeParser.populateBook(output, BookStore.getBook("tranc1-out"));
 									
-			Billing billing = BillingFactory.createBilling(BookStore.getBook("tranc1-out").get("STUDENT-INFO"));
+			Billing billing = BillingFactory.createBilling(BookStore.getBook("tranc1-in").get("STUDENT-INFO").get("STUDENT-ID").getIntValue(), BookStore.getBook("tranc1-out").get("STUDENT-INFO"));
 			MailSender.sendMail(billing);
 					
 		} catch (IOException e) {

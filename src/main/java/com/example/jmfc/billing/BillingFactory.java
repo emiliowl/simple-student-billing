@@ -25,9 +25,8 @@ public class BillingFactory {
 			return portions;
 	}
 	
-	public static Billing createBilling(Book studentInfo) throws BusinessException {
-		return new Billing(
-				studentInfo.get("STUDENT-ID").getIntValue(),
+	public static Billing createBilling(int studentId, Book studentInfo) throws BusinessException {
+		return new Billing(studentId,
 				studentInfo.get("STUDENT-NAME").get("FIRST-NAME").getValue().trim(),
 				studentInfo.get("STUDENT-NAME").get("SURNAME").getValue().trim(),
 				studentInfo.get("PARENTS-NAMES").get("FATHER-NAME").getValue().trim(),

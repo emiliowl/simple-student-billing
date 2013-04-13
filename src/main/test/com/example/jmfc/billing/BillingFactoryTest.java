@@ -20,8 +20,7 @@ public class BillingFactoryTest {
 	
 	@Test
 	public void shouldGenerateBillingFromBook() throws BusinessException {
-		Billing billing = BillingFactory.createBilling(BookStore.getBook("tranc1-out").get("STUDENT-INFO"));
-		assertEquals(1234567, billing.getStudentId());
+		Billing billing = BillingFactory.createBilling(1234567, BookStore.getBook("tranc1-out").get("STUDENT-INFO"));
 		assertEquals("JOAOZINHO DA SILVA", billing.getFullName());
 		assertEquals("JOSE", billing.getFatherName());
 		assertEquals("MARIA", billing.getMotherName());

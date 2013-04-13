@@ -13,8 +13,7 @@ public class BillingTest {
 
 	@Test
 	public void shouldReceiveTheStringForBillingAndGenerateTheMailBodyFromIt() {
-		Billing bill = new Billing("1234567JOAOZINHO SOBRENOME      JOSE      MARIA     001010300,00");
-		assertEquals(1234567, bill.getStudentId());
+		Billing bill = new Billing("JOAOZINHO SOBRENOME      LOGIN JOSE      MARIA     001010300,00");
 		assertEquals("JOAOZINHO SOBRENOME", bill.getStudentName());
 		assertEquals("JOSE", bill.getFatherName());
 		assertEquals("MARIA", bill.getMotherName());
@@ -26,19 +25,19 @@ public class BillingTest {
 	}
 	
 	@Test
-	public void shouldNotAcceptStringWithLessThan55Characteres() {
+	public void shouldNotAcceptStringWithLessThan54Characteres() {
 		try {
-			new Billing("1234567JOAOZINHO SOBRENOME      JOSE      MARIA     00");
+			new Billing("JOAOZINHO SOBRENOME      LOGIN JOSE      MARIA     00");
 			fail("Should generate IllegalArgumentException!");
 		} catch (IllegalArgumentException ex) {
-			assertEquals("Comunicação inválida - String de entrada deve ter no mínimo 55 caracteres.", ex.getMessage());
+			assertEquals("Comunicação inválida - String de entrada deve ter no mínimo 54 caracteres.", ex.getMessage());
 		}
 	}
 	
 	@Test
 	public void shouldVerifyTheDataIntegrityForNextPortion() {
 		try {
-			new Billing("1234567JOAOZINHO SOBRENOME      JOSE      MARIA     001010400,0");
+			new Billing("JOAOZINHO SOBRENOME      LOGIN JOSE      MARIA     001010400,0");
 			fail("Should generate IllegalArgumentException!");
 		} catch (IllegalArgumentException ex) {
 			assertEquals("Comunicação inválida - Dados insuficientes para calcular próxima parcela", ex.getMessage());

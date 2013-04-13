@@ -38,7 +38,7 @@ public class EntryTest {
 			proc.waitFor();
 			String result = getProcessSysout(proc);
 			
-			assertTrue(result.contains("string received: 1234567JOAOZINHO DA SILVA       JOSE      MARIA     00101+050000"));
+			assertTrue(result.contains("string received: JOAOZINHO DA SILVA       LOGIN JOSE      MARIA     00101+050000"));
 		} catch (IOException e) {
 			fail("something went wrong!");
 			e.printStackTrace();
