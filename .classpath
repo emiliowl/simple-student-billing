@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/test"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/emiliowl/.m2/repository/com/expert/mf-communicator-mock/0.0.1-SNAPSHOT/mf-communicator-mock-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/emiliowl/.m2/repository/com/expert/jmfc/jmfc/0.4-SNAPSHOT/jmfc-0.4-20130120.162537-1.jar" sourcepath="/jmfc"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
